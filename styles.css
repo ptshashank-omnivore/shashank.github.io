@@ -1,0 +1,92 @@
+/* Color palette: tech-meets-eco */
+:root{
+  --bg1:#041214;      /* deep teal/ink */
+  --bg2:#0a1f2a;      /* midnight blue */
+  --card:rgba(255,255,255,0.06);
+  --stroke:rgba(255,255,255,0.10);
+  --text:#e6f3f0;     /* misty mint white */
+  --muted:#bfe3d9;    /* pale mint */
+  --accent:#11c5a2;   /* eco-teal */
+  --accent-2:#63e9ff; /* cyan tech pop */
+  --chip:#0c2b2e;     /* dark teal */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--text); background:linear-gradient(180deg,var(--bg1),var(--bg2));
+}
+
+/* Subtle animated eco-tech background */
+.bg{
+  position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(40rem 30rem at 85% 15%, rgba(99,233,255,0.13), transparent 60%),
+    radial-gradient(35rem 25rem at 10% 80%, rgba(17,197,162,0.10), transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+}
+/* leaf-circuit pattern overlay (SVG data URL) */
+.bg::after{
+  content:""; position:absolute; inset:0; z-index:-1; opacity:0.12; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23a7f3d0' stroke-opacity='0.25' stroke-width='1'%3E%3Cpath d='M80 10v140M10 80h140'/%3E%3Cpath d='M40 20c20 30 60 30 80 0M40 140c20-30 60-30 80 0'/%3E%3Ccircle cx='80' cy='80' r='26'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:160px 160px;
+}
+
+.site-header{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 20px; position:sticky; top:0; backdrop-filter: blur(10px);
+  background:rgba(0,0,0,0.25); border-bottom:1px solid var(--stroke);
+}
+.brand{display:flex; align-items:center; gap:10px; font-weight:700}
+.logo{
+  display:inline-grid; place-items:center; width:36px; height:36px; border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#001010; font-family:'Orbitron', sans-serif; font-weight:800;
+}
+.brand-text{font-family:'Orbitron', sans-serif; letter-spacing:0.5px}
+
+.nav{display:flex; gap:14px; flex-wrap:wrap}
+.nav a{color:var(--muted); padding:8px 10px; border-radius:10px}
+.nav a:hover{color:var(--text); background:rgba(255,255,255,0.06)}
+.nav a.active{color:#001; background:linear-gradient(135deg,var(--accent),var(--accent-2)); font-weight:700}
+.nav .cta{border:1px solid var(--stroke)}
+
+.container{max-width:1080px; margin:0 auto; padding:20px}
+.hero-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:16px}
+@media (max-width: 900px){ .hero-grid{grid-template-columns:1fr} }
+
+.card{
+  background:var(--card); border:1px solid var(--stroke); border-radius:18px; padding:20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.highlight{border-color:rgba(99,233,255,0.35)}
+
+.display{font-family:'Orbitron', sans-serif; font-size:38px; margin:0 0 6px; line-height:1.05}
+.display span{background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.lead{font-size:18px; color:var(--muted)}
+
+.chips{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0}
+.chips span{background:var(--chip); color:#b9fff0; padding:6px 10px; border-radius:999px; border:1px solid var(--stroke); font-size:13px}
+
+.cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+.btn{background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#001010; padding:10px 14px; border:none; border-radius:12px; font-weight:700}
+.btn.ghost{background:transparent; color:var(--muted); border:1px solid var(--stroke)}
+.btn:hover{filter:saturate(1.1)}
+
+.proj{padding:14px 0; border-bottom:1px dashed var(--stroke)}
+.proj:last-child{border-bottom:none}
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+.badges span{font-size:12px; background:#051c1e; color:#9cf6e6; border:1px solid var(--stroke); padding:4px 8px; border-radius:999px}
+
+.page{font-family:'Orbitron', sans-serif; font-size:30px; margin:0 0 6px}
+.meta{color:var(--muted); font-size:14px}
+.role{margin-top:18px}
+
+.list{margin:0; padding-left:18px; color:var(--text)}
+.list.dim{color:var(--muted)}
+
+.timeline{list-style:none; margin:0; padding:0}
+.timeline li{position:relative; padding:14px 0 14px 18px; border-left:2px solid var(--accent)}
+.timeline li::before{content:""; position:absolute; left:-7px; top:24px; width:10px; height:10px; border-radius:50%; background:var(--accent-2)}
+
+.site-footer{color:var(--muted); text-align:center; padding:24px}
